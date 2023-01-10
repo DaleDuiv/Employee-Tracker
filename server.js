@@ -6,14 +6,6 @@ const db = require("./config/connection");
 require("dotenv").config();
 
 
-// const connection = mysql2.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "1967Werewolf!",
-//   database: "employee_db"
-// });
-
-
 function splashScreen() {
   const longText1 = `*** SQL Challenge ***`;
 
@@ -43,11 +35,9 @@ db.connect(function(err){
   if(err) throw err;
   console.log("SQL connected");
 
-  //add start function here
   start();
 });
 
-//Basic functionality of application
 function start(){
   inquirer
       .prompt([
@@ -79,7 +69,6 @@ function start(){
       });
 }
 
-//VIEW FUNCTION SET
 function view(){
   inquirer
       .prompt([
@@ -114,10 +103,8 @@ function viewAllEmployees(){
 }
 
 function viewByDepartment(){
-  //query database for all departments
   db.query("SELECT * FROM department", function(err, results){
       if(err) throw err;
-      //once you have the departments, prompt user for which they chose
       inquirer
           .prompt([
               {
@@ -146,10 +133,8 @@ function viewByDepartment(){
 }
 
 function viewByRole(){
-  //query database for all departments
   db.query("SELECT title FROM role", function(err, results){
       if(err) throw err;
-      //once you have the roles, prompt user for which they chose
       inquirer
           .prompt([
               {
@@ -179,7 +164,6 @@ function viewByRole(){
 }
 
 
-//ADD FUNCTION SET
 function add(){
   inquirer
       .prompt([
@@ -207,7 +191,6 @@ function add(){
 }
 
 function addDepartment(){
-  //Prompt info for department
   inquirer
       .prompt([
           {
@@ -231,7 +214,6 @@ function addDepartment(){
 }
 
 function addEmployeeRole(){
-  //Prompt info for role
   inquirer
       .prompt([
           {
@@ -284,7 +266,6 @@ function addEmployeeRole(){
 function addEmployee(){
   db.query("SELECT * FROM role", function(err, results){
       if(err) throw err;
-      //Once you have results prompt user to new employee information
       inquirer
       .prompt([
           {
@@ -323,7 +304,6 @@ function addEmployee(){
           }
       ])
       .then(function(answer){
-          //answer is an object with key value pairs from inquirer prompt
           db.query(
               "INSERT INTO employee SET ?",
               {
@@ -341,9 +321,7 @@ function addEmployee(){
   });
 }
 
-//UPDATE FUNCTION SET
 function updateEmployee(){
-  //Select employee to update
   db.query("SELECT * FROM employee",
       function(err, results){
       if(err) throw err;
@@ -364,7 +342,6 @@ function updateEmployee(){
               }
           ])
           .then(function(answer){
-              //SaveName is employee
               const saveName = answer.choice;
 
               db.query("SELECT * FROM employee", 
