@@ -27,7 +27,7 @@ I had trouble understanding the file structure, as well as being unsure what ave
 
 
 ## preview 
-![screenshot of the main page of the application](appPreview.png)
+![screenshot of the main page of the application](./appPreview.PNG)
 
 ## Preview of application
 For this one I will be submitting the video in the homework.
