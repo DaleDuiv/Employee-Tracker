@@ -1,4 +1,4 @@
-# sqlchallengeweek12
+# Employee Tracker
 
 ## Description
 This is the Employee Tracker challenge for the week of SQL, which is a challenge that uses the command-lin aswell as utilizing a sql database.
